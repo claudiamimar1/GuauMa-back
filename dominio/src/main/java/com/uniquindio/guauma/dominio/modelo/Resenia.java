@@ -1,7 +1,6 @@
 
 package com.uniquindio.guauma.dominio.modelo;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,14 +11,18 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Categoria {
+public class Resenia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "categoria_pk")
-    private Long idCategoria;
+    @Column(name = "resenia_pk")
+    private Long idResenia;
 
-    private String nombre;
+    private Integer puntaje;
 
-    private String descripcion;
+    private String comentario;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "producto_fk")
+    private Producto producto;
 }
