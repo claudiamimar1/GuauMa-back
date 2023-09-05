@@ -1,14 +1,12 @@
-
 package com.uniquindio.guauma.aplicacion.dto;
 
-import com.uniquindio.guauma.dominio.modelo.Pais;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import javax.persistence.*;
-import java.util.List;
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class DepartamentoDTO {
 
     private Long idDepartamento;

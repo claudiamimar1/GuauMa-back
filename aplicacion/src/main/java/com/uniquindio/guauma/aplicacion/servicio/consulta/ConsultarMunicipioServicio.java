@@ -1,9 +1,7 @@
 package com.uniquindio.guauma.aplicacion.servicio.consulta;
 
-import com.uniquindio.guauma.aplicacion.dto.DepartamentoDTO;
 import com.uniquindio.guauma.aplicacion.dto.MunicipioDTO;
 import com.uniquindio.guauma.aplicacion.util.ObjectMapperUtils;
-import com.uniquindio.guauma.infraestructura.persistencia.DepartamentoRepositorio;
 import com.uniquindio.guauma.infraestructura.persistencia.MunicipioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

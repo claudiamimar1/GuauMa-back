@@ -23,7 +23,7 @@ public class ObjectMapperUtils {
     }
 
     public static <D, T> List<D> mapAll(Collection<T> entityList, Class<D> outCLass) {
-        return (List)entityList.stream().map((entity) -> {
+        return entityList.stream().map((entity) -> {
             return map(entity, outCLass);
         }).collect(Collectors.toList());
     }

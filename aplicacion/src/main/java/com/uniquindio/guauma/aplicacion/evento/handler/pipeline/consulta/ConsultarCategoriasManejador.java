@@ -36,7 +36,7 @@ public class ConsultarCategoriasManejador implements Command.Handler<ConsultarCa
         if (categorias == null || categorias.isEmpty()){
             return respuesta;
         }
-        return respuesta = new RespuestaComando(true,"Consulta exitosa", categorias,
+        return new RespuestaComando(true,"Consulta exitosa", categorias,
                 HttpStatus.ACCEPTED);
     }
 }

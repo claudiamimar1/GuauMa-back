@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface DepartamentoRepositorio extends JpaRepository<Departamento, Long> {
 
-    List<Departamento> findByCodigo(Long codigo);
+    List<Departamento> findByPais_Codigo(Long codigo);
 
 }
