@@ -99,7 +99,7 @@ public class UsuarioControlador {
             @ApiResponse(responseCode = Constantes.INTERNAL_SERVER_ERROR_500, content = { @Content(mediaType = Constantes.APPLICATION_JSON)}, description =
                     Constantes.INTERNAL_SERVER_ERROR_500)
     })
-    @GetMapping("/tipo-dentificacion")
+    @GetMapping("/tipo-identificacion")
     public ResponseEntity<RespuestaComando> consultarTipoDocumentos() {
         RespuestaComando respuesta = pipeline.send(new ConsultarTipoIdentificacionComando());
         return new ResponseEntity<>(respuesta, respuesta.getEstadoHttp());
