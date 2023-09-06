@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RolDTO {
+public class DireccionDTO {
 
-    private Long idRol;
-
-    private String nombre;
+    private Long idDireccion;
 
     private String descripcion;
+
+    private Long codigoMunicipio;
 }

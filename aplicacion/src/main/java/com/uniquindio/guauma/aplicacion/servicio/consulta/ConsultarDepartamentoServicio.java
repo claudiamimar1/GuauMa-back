@@ -24,6 +24,6 @@ public class ConsultarDepartamentoServicio {
      * @return  Lista con los departamentos
      */
     public List<DepartamentoDTO> obtenerDepartamentos(Long codigoPais){
-        return ObjectMapperUtils.mapAll(repositorio.findByCodigo(codigoPais), DepartamentoDTO.class);
+        return ObjectMapperUtils.mapAll(repositorio.findByPais_Codigo(codigoPais), DepartamentoDTO.class);
     }
 }

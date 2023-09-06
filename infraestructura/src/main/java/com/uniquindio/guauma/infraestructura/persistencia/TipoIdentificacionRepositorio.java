@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TipoIdentificacionRepositorio extends JpaRepository<TipoIdentificacion, Long> {
+
+    TipoIdentificacion findByNombre(String nombre);
 }

@@ -1,6 +1,7 @@
 package com.uniquindio.guauma.interfaz.controlador;
 
 import an.awesome.pipelinr.Pipeline;
+import com.uniquindio.guauma.aplicacion.dto.pipeline.comando.CrearUsuarioComando;
 import com.uniquindio.guauma.aplicacion.dto.pipeline.comando.RespuestaComando;
 import com.uniquindio.guauma.aplicacion.dto.pipeline.consulta.*;
 import com.uniquindio.guauma.aplicacion.util.Constantes;
@@ -25,6 +26,46 @@ public class UsuarioControlador {
 
     @Autowired
     private Pipeline pipeline;
+
+    /**
+     * Método que consulta el usuario
+     * @return ResponseEntity<RespuestaComando> Respuesta con la información del usuario
+     */
+    @Operation(summary = "Consultar usuario")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = Constantes.OK_200, content = { @Content(mediaType = Constantes.APPLICATION_JSON, schema =
+            @Schema(implementation = ConsultarUsuarioComando.class))}, description = Constantes.RESPUESTA_OK),
+            @ApiResponse(responseCode = Constantes.NOT_FOUND_404, content = { @Content(mediaType = Constantes.APPLICATION_JSON)}, description =
+                    Constantes.RESPUESTA_NOT_FOUND),
+            @ApiResponse(responseCode = Constantes.INTERNAL_SERVER_ERROR_500, content = { @Content(mediaType = Constantes.APPLICATION_JSON)}, description =
+                    Constantes.INTERNAL_SERVER_ERROR_500)
+    })
+    @GetMapping
+    public ResponseEntity<RespuestaComando> consultarUsuario(@RequestParam String correo) {
+        ConsultarUsuarioComando comando = new ConsultarUsuarioComando();
+        comando.setCorreo(correo);
+        RespuestaComando respuesta = pipeline.send(comando);
+        return new ResponseEntity<>(respuesta, respuesta.getEstadoHttp());
+    }
+
+    /**
+     * Método que registra la información del usuario
+     * @return ResponseEntity<RespuestaComando> Respuesta con el resultado de la petición
+     */
+    @Operation(summary = "Registrar usuario")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = Constantes.OK_200, content = { @Content(mediaType = Constantes.APPLICATION_JSON, schema =
+            @Schema(implementation = CrearUsuarioComando.class))}, description = Constantes.RESPUESTA_OK),
+            @ApiResponse(responseCode = Constantes.NOT_FOUND_404, content = { @Content(mediaType = Constantes.APPLICATION_JSON)}, description =
+                    Constantes.RESPUESTA_NOT_FOUND),
+            @ApiResponse(responseCode = Constantes.INTERNAL_SERVER_ERROR_500, content = { @Content(mediaType = Constantes.APPLICATION_JSON)}, description =
+                    Constantes.INTERNAL_SERVER_ERROR_500)
+    })
+    @PostMapping
+    public ResponseEntity<RespuestaComando> registrarUsuario(@RequestBody CrearUsuarioComando comando) {
+        RespuestaComando respuesta = pipeline.send(comando);
+        return new ResponseEntity<>(respuesta, respuesta.getEstadoHttp());
+    }
 
     /**
      * Método que obtiene los roles
