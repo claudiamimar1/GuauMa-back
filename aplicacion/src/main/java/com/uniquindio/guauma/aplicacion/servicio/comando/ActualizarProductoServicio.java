@@ -31,6 +31,7 @@ public class ActualizarProductoServicio {
      */
     public void actualizarProducto(ActualizarProductoComando comando){
         Producto producto = new Producto();
+        producto.setIdProducto(comando.getIdProducto());
         producto.setNombre(comando.getNombre());
         producto.setDescripcion(comando.getDescripcion());
         producto.setPrecio(comando.getPrecio());
@@ -38,7 +39,6 @@ public class ActualizarProductoServicio {
         producto.setUsuario(usuarioRepositorio.findByTipoIdentificacion_NombreAndNumeroIdentificacion(
                 comando.getUsuario().getTipoIdentificacion().getNombre(),
                 comando.getUsuario().getNumeroIdentificacion()));
-
         productoRepositorio.save(producto);
     }
 }
