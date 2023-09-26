@@ -1,12 +1,8 @@
 package com.uniquindio.guauma.aplicacion.servicio.comando;
 
 import com.uniquindio.guauma.aplicacion.dto.pipeline.comando.CrearPublicacionComando;
-import com.uniquindio.guauma.aplicacion.dto.pipeline.comando.CrearReseniaComando;
 import com.uniquindio.guauma.dominio.modelo.Publicacion;
-import com.uniquindio.guauma.dominio.modelo.Resenia;
-import com.uniquindio.guauma.infraestructura.persistencia.ProductoRepositorio;
 import com.uniquindio.guauma.infraestructura.persistencia.PublicacionRepositorio;
-import com.uniquindio.guauma.infraestructura.persistencia.ReseniaRepositorio;
 import com.uniquindio.guauma.infraestructura.persistencia.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

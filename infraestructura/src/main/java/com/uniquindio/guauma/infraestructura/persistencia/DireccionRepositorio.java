@@ -1,7 +1,6 @@
 package com.uniquindio.guauma.infraestructura.persistencia;
 
 import com.uniquindio.guauma.dominio.modelo.Direccion;
-import com.uniquindio.guauma.dominio.modelo.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

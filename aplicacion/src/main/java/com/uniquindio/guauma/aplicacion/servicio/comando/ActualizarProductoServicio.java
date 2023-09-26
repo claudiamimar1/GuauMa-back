@@ -1,7 +1,6 @@
 package com.uniquindio.guauma.aplicacion.servicio.comando;
 
 import com.uniquindio.guauma.aplicacion.dto.pipeline.comando.ActualizarProductoComando;
-import com.uniquindio.guauma.aplicacion.util.ObjectMapperUtils;
 import com.uniquindio.guauma.dominio.modelo.Producto;
 import com.uniquindio.guauma.infraestructura.persistencia.CategoriaRepositorio;
 import com.uniquindio.guauma.infraestructura.persistencia.ProductoRepositorio;

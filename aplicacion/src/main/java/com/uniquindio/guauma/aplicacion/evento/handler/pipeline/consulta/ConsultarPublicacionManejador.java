@@ -1,12 +1,9 @@
 package com.uniquindio.guauma.aplicacion.evento.handler.pipeline.consulta;
 
 import an.awesome.pipelinr.Command;
-import com.uniquindio.guauma.aplicacion.dto.ProductoDTO;
 import com.uniquindio.guauma.aplicacion.dto.PublicacionDTO;
 import com.uniquindio.guauma.aplicacion.dto.pipeline.comando.RespuestaComando;
-import com.uniquindio.guauma.aplicacion.dto.pipeline.consulta.ConsultarProductoComando;
 import com.uniquindio.guauma.aplicacion.dto.pipeline.consulta.ConsultarPublicacionComando;
-import com.uniquindio.guauma.aplicacion.servicio.consulta.ConsultarProductoServicio;
 import com.uniquindio.guauma.aplicacion.servicio.consulta.ConsultarPublicacionServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

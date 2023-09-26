@@ -1,14 +1,9 @@
 package com.uniquindio.guauma.aplicacion.dto.pipeline.comando;
 
 import an.awesome.pipelinr.Command;
-import com.uniquindio.guauma.aplicacion.dto.CategoriaDTO;
 import com.uniquindio.guauma.aplicacion.dto.DireccionDTO;
-import com.uniquindio.guauma.aplicacion.dto.RolDTO;
-import com.uniquindio.guauma.aplicacion.dto.TipoIdentificacionDTO;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.math.BigDecimal;
 
 /**
  * @author Carolina Marin Hincapie Uniquindio cmarinh@uniquindio.edu.co
@@ -28,6 +23,8 @@ public class CrearUsuarioComando implements Command<RespuestaComando> {
     private String nombreRazonSocial;
 
     private String correo;
+
+    private String contrasenia;
 
     private String celular;
 

@@ -19,6 +19,8 @@ public class UsuarioDTO {
 
     private String correo;
 
+    private String contrasenia;
+
     private String celular;
 
     private DireccionDTO direccion;

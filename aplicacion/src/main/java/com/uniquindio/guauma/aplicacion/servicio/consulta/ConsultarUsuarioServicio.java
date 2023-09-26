@@ -1,9 +1,8 @@
 package com.uniquindio.guauma.aplicacion.servicio.consulta;
 
-import com.uniquindio.guauma.aplicacion.dto.PaisDTO;
 import com.uniquindio.guauma.aplicacion.dto.UsuarioDTO;
 import com.uniquindio.guauma.aplicacion.util.ObjectMapperUtils;
-import com.uniquindio.guauma.infraestructura.persistencia.PaisRepositorio;
+import com.uniquindio.guauma.infraestructura.persistencia.RolRepositorio;
 import com.uniquindio.guauma.infraestructura.persistencia.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +19,8 @@ public class ConsultarUsuarioServicio {
 
     @Autowired
     private UsuarioRepositorio repositorio;
+    @Autowired
+    private RolRepositorio rolRepositorio;
 
     /**
      * Metodo que obtiene el usuario
@@ -27,5 +28,10 @@ public class ConsultarUsuarioServicio {
      */
     public UsuarioDTO consultarUsuario(String correo){
         return ObjectMapperUtils.map(repositorio.findByCorreo(correo), UsuarioDTO.class);
+    }
+
+    public List<UsuarioDTO> obtenerProveedores(String nombre_rol) {
+        Long idRol = rolRepositorio.findByNombre(nombre_rol).getIdRol();
+        return ObjectMapperUtils.mapAll(repositorio.findByRol_IdRol(idRol) , UsuarioDTO.class);
     }
 }

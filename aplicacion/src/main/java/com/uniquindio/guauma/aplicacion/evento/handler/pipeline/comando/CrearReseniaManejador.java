@@ -2,10 +2,8 @@ package com.uniquindio.guauma.aplicacion.evento.handler.pipeline.comando;
 
 import an.awesome.pipelinr.Command;
 import com.uniquindio.guauma.aplicacion.dto.pipeline.comando.CrearReseniaComando;
-import com.uniquindio.guauma.aplicacion.dto.pipeline.comando.CrearUsuarioComando;
 import com.uniquindio.guauma.aplicacion.dto.pipeline.comando.RespuestaComando;
 import com.uniquindio.guauma.aplicacion.servicio.comando.CrearReseniaServicio;
-import com.uniquindio.guauma.aplicacion.servicio.comando.CrearUsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;

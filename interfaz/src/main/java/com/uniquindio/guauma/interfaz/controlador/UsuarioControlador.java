@@ -49,6 +49,27 @@ public class UsuarioControlador {
     }
 
     /**
+     * Método que consulta el usuario
+     * @return ResponseEntity<RespuestaComando> Respuesta con la información del usuario
+     */
+    @Operation(summary = "Consultar proveedores")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = Constantes.OK_200, content = { @Content(mediaType = Constantes.APPLICATION_JSON, schema =
+            @Schema(implementation = ConsultarProveedorComando.class))}, description = Constantes.RESPUESTA_OK),
+            @ApiResponse(responseCode = Constantes.NOT_FOUND_404, content = { @Content(mediaType = Constantes.APPLICATION_JSON)}, description =
+                    Constantes.RESPUESTA_NOT_FOUND),
+            @ApiResponse(responseCode = Constantes.INTERNAL_SERVER_ERROR_500, content = { @Content(mediaType = Constantes.APPLICATION_JSON)}, description =
+                    Constantes.INTERNAL_SERVER_ERROR_500)
+    })
+    @GetMapping("/lista-proveedores")
+    public ResponseEntity<RespuestaComando> consultarListaProveedores(@RequestParam String nombre_rol) {
+        ConsultarProveedorComando comando = new ConsultarProveedorComando();
+        comando.setNombre(nombre_rol);
+        RespuestaComando respuesta = pipeline.send(comando);
+        return new ResponseEntity<>(respuesta, respuesta.getEstadoHttp());
+    }
+
+    /**
      * Método que registra la información del usuario
      * @return ResponseEntity<RespuestaComando> Respuesta con el resultado de la petición
      */

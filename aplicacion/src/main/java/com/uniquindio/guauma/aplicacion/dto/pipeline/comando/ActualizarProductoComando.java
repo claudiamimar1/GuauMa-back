@@ -1,7 +1,6 @@
 package com.uniquindio.guauma.aplicacion.dto.pipeline.comando;
 
 import an.awesome.pipelinr.Command;
-import com.uniquindio.guauma.aplicacion.dto.CategoriaDTO;
 import com.uniquindio.guauma.aplicacion.dto.UsuarioDTO;
 import lombok.Getter;
 import lombok.Setter;

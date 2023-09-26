@@ -1,11 +1,9 @@
 package com.uniquindio.guauma.aplicacion.servicio.comando;
 
 import com.uniquindio.guauma.aplicacion.dto.pipeline.comando.CrearReseniaComando;
-import com.uniquindio.guauma.aplicacion.dto.pipeline.comando.CrearUsuarioComando;
-import com.uniquindio.guauma.dominio.modelo.Direccion;
 import com.uniquindio.guauma.dominio.modelo.Resenia;
-import com.uniquindio.guauma.dominio.modelo.Usuario;
-import com.uniquindio.guauma.infraestructura.persistencia.*;
+import com.uniquindio.guauma.infraestructura.persistencia.ProductoRepositorio;
+import com.uniquindio.guauma.infraestructura.persistencia.ReseniaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,6 @@
 package com.uniquindio.guauma.interfaz.controlador;
 
 import an.awesome.pipelinr.Pipeline;
-import com.uniquindio.guauma.aplicacion.dto.TipoIdentificacionDTO;
 import com.uniquindio.guauma.aplicacion.dto.pipeline.comando.ActualizarProductoComando;
 import com.uniquindio.guauma.aplicacion.dto.pipeline.comando.CrearPublicacionComando;
 import com.uniquindio.guauma.aplicacion.dto.pipeline.comando.CrearReseniaComando;
