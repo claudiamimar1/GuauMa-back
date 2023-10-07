@@ -1,6 +1,7 @@
 package com.uniquindio.guauma.aplicacion.servicio.comando;
 
 import com.uniquindio.guauma.aplicacion.dto.pipeline.comando.CrearUsuarioComando;
+import com.uniquindio.guauma.aplicacion.util.Encriptar;
 import com.uniquindio.guauma.dominio.modelo.Direccion;
 import com.uniquindio.guauma.dominio.modelo.Usuario;
 import com.uniquindio.guauma.infraestructura.persistencia.*;
@@ -8,12 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.SecretKeySpec;
 import java.security.InvalidKeyException;
-import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 
 /**
@@ -23,8 +21,6 @@ import java.security.NoSuchAlgorithmException;
  */
 @Service
 public class CrearUsuarioServicio {
-
-    private static final String KEY = "GuauMa-CuidadoAnimal";
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
@@ -50,7 +46,7 @@ public class CrearUsuarioServicio {
         usuario.setNumeroIdentificacion(comando.getNumeroIdentificacion());
         usuario.setNombreRazonSocial(comando.getNombreRazonSocial());
         usuario.setCorreo(comando.getCorreo());
-        usuario.setContrasenia(encriptarContrasenia(comando.getContrasenia()));
+        usuario.setContrasenia(Encriptar.encriptarContrasenia(comando.getContrasenia()));
         usuario.setCelular(comando.getCelular());
         Direccion direccion = new Direccion();
         direccion.setDescripcion(comando.getDireccion().getDescripcion());
@@ -61,19 +57,4 @@ public class CrearUsuarioServicio {
         usuarioRepositorio.save(usuario);
     }
 
-    public String encriptarContrasenia(String contrasenia) throws NoSuchPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
-
-        Key key = new SecretKeySpec(KEY.getBytes(),  0, 16, "AES");
-
-        Cipher aes = Cipher.getInstance("AES/ECB/PKCS5Padding");
-
-        aes.init(Cipher.ENCRYPT_MODE, key);
-        byte[] encriptado = aes.doFinal(contrasenia.getBytes());
-        String contraseniaEncriptada = "";
-        for (byte b : encriptado) {
-            contraseniaEncriptada += (Integer.toHexString(0xFF & b));
-        }
-
-        return contraseniaEncriptada;
-    }
 }

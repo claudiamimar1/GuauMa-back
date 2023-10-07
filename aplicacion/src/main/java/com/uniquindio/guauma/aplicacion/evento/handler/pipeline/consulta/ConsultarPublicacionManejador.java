@@ -31,6 +31,10 @@ public class ConsultarPublicacionManejador implements Command.Handler<ConsultarP
     public RespuestaComando handle(ConsultarPublicacionComando comando){
         List<PublicacionDTO> publicaciones = service.consultarPublicaciones();
 
+        for (PublicacionDTO publicacion: publicaciones) {
+            publicacion.getUsuario().setContrasenia(null);
+        }
+
         if (publicaciones == null || publicaciones.isEmpty()){
             return new RespuestaComando(false,"No se encuentran publicaciones", publicaciones, HttpStatus.ACCEPTED);
         }

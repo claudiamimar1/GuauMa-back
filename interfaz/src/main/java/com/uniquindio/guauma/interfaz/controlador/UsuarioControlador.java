@@ -187,4 +187,25 @@ public class UsuarioControlador {
         return new ResponseEntity<>(respuesta, respuesta.getEstadoHttp());
     }
 
+    /**
+     * Método que valida el inicio de sesión
+     * @return ResponseEntity<RespuestaComando> Respuesta con el inicio de sesión
+     */
+    @Operation(summary = "Validar inicio de sesión")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = Constantes.OK_200, content = { @Content(mediaType = Constantes.APPLICATION_JSON, schema =
+            @Schema(implementation = ConsultarUsuarioInicioSesionComando.class))}, description = Constantes.RESPUESTA_OK),
+            @ApiResponse(responseCode = Constantes.NOT_FOUND_404, content = { @Content(mediaType = Constantes.APPLICATION_JSON)}, description =
+                    Constantes.RESPUESTA_NOT_FOUND),
+            @ApiResponse(responseCode = Constantes.INTERNAL_SERVER_ERROR_500, content = { @Content(mediaType = Constantes.APPLICATION_JSON)}, description =
+                    Constantes.INTERNAL_SERVER_ERROR_500)
+    })
+    @GetMapping("/iniciar-sesion")
+    public ResponseEntity<RespuestaComando> iniciarSesion(@RequestParam String correo, @RequestParam String contrasenia) {
+        ConsultarUsuarioInicioSesionComando comando = new ConsultarUsuarioInicioSesionComando();
+        comando.setCorreo(correo);
+        comando.setContrasenia(contrasenia);
+        RespuestaComando respuesta = pipeline.send(comando);
+        return new ResponseEntity<>(respuesta, respuesta.getEstadoHttp());
+    }
 }
