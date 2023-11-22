@@ -140,7 +140,7 @@ public class UsuarioControlador {
                     Constantes.INTERNAL_SERVER_ERROR_500)
     })
     @GetMapping("/municipios")
-    public ResponseEntity<RespuestaComando> consultarMunicipios(@RequestParam Long codigoDepartamento) {
+    public ResponseEntity<RespuestaComando> consultarMunicipios(@RequestParam(required = false) Long codigoDepartamento) {
         ConsultarMunicipioComando comando = new ConsultarMunicipioComando();
         comando.setCodigoDepartamento(codigoDepartamento);
         RespuestaComando respuesta = pipeline.send(comando);

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -19,4 +20,5 @@ public class ProductoDTO {
     private CategoriaDTO categoria;
     private UsuarioDTO usuario;
     private Integer resenias;
+    private List<String> comentarios;
 }

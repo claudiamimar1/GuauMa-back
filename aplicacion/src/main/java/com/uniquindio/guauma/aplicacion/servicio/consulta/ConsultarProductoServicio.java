@@ -36,10 +36,10 @@ public class ConsultarProductoServicio {
     public List<ProductoDTO> consultarProductos(ConsultarProductoComando comando){
         List <ProductoDTO> productos;
         if (comando.getNombreCategoria()!=null){
-            List<Producto> productosEntityCategoria = productoRepositorio.findAll();
+            List<Producto> productosEntityCategoria = productoRepositorio.findByCategoria_Nombre(comando.getNombreCategoria());
             productos = crearObjetoProducto(productosEntityCategoria);
         } else if (comando.getTipoIdentificacion() != null && comando.getNumeroIdentificacion()!=null){
-            List<Producto> productosEntityUsuario= productoRepositorio.findAll();
+            List<Producto> productosEntityUsuario= productoRepositorio.findByUsuario_TipoIdentificacion_NombreAndUsuario_NumeroIdentificacion(comando.getTipoIdentificacion(), comando.getNumeroIdentificacion());
             productos = crearObjetoProducto(productosEntityUsuario);
         } else {
             List<Producto> productosEntity = productoRepositorio.findAll();
@@ -89,6 +89,14 @@ public class ConsultarProductoServicio {
             productoDTO.setCategoria(categoriaDTO);
             productoDTO.setUsuario(usuarioDTO);
             productos.add(productoDTO);
+
+            List<String> comentarios= new ArrayList<String>();
+
+            for(Resenia resenia:producto.getResenias()) {
+                comentarios.add(resenia.getComentario());
+            }
+
+            productoDTO.setComentarios(comentarios);
         }
         return productos;
     }

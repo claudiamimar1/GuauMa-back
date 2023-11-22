@@ -24,6 +24,10 @@ public class ConsultarMunicipioServicio {
      * @return  Lista con los municipios
      */
     public List<MunicipioDTO> obtenerMunicipios(Long codigoDepartamento){
-        return ObjectMapperUtils.mapAll(repositorio.findByDepartamento_Codigo(codigoDepartamento), MunicipioDTO.class);
+        if (codigoDepartamento != 0) {
+            return ObjectMapperUtils.mapAll(repositorio.findByDepartamento_Codigo(codigoDepartamento), MunicipioDTO.class);
+        } else {
+            return ObjectMapperUtils.mapAll(repositorio.findAll(), MunicipioDTO.class);
+        }
     }
 }

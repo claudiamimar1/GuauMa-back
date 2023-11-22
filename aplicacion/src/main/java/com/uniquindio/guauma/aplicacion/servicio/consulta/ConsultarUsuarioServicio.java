@@ -3,6 +3,7 @@ package com.uniquindio.guauma.aplicacion.servicio.consulta;
 import com.uniquindio.guauma.aplicacion.dto.UsuarioDTO;
 import com.uniquindio.guauma.aplicacion.util.Encriptar;
 import com.uniquindio.guauma.aplicacion.util.ObjectMapperUtils;
+import com.uniquindio.guauma.dominio.modelo.Usuario;
 import com.uniquindio.guauma.infraestructura.persistencia.RolRepositorio;
 import com.uniquindio.guauma.infraestructura.persistencia.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,11 @@ public class ConsultarUsuarioServicio {
      * @return  Usuario
      */
     public UsuarioDTO consultarUsuario(String correo){
-        return ObjectMapperUtils.map(repositorio.findByCorreo(correo), UsuarioDTO.class);
+        Usuario usuario = repositorio.findByCorreo(correo);
+        UsuarioDTO usuarioDTO = ObjectMapperUtils.map(repositorio.findByCorreo(correo), UsuarioDTO.class);
+        usuarioDTO.getDireccion().setCodigoMunicipio(usuario.getDireccion().getMunicipio().getIdMunicipio());
+        usuarioDTO.setContrasenia(null);
+        return usuarioDTO;
     }
 
     public List<UsuarioDTO> obtenerProveedores(String nombre_rol) {
